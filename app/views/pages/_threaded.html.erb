@@ -1,0 +1,15 @@
+<article class='page-threaded' data-page-id='<%= threaded.id %>'>
+
+  <header class='threaded'>
+    <%= image_tag threaded.user.avatar, class: 'avatar' %>
+    <h3><%= threaded.title %></h3>
+  </header>
+
+  <div class='threaded-content'>
+    <section>
+      <%= simple_format threaded.content.gsub(/\n/, "\n\n") %>
+    </section>
+  </div>
+  <%= render partial: 'comments/threaded', collection: threaded.comments.select{ |c| c.parent_id.nil? } %>
+
+</article>

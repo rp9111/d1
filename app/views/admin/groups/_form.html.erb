@@ -1,0 +1,39 @@
+<div class="modal-body">
+  <%= form_for([:admin, group]) do |f| %>
+    <h4 class="modal-title text-center" id="exampleModalLabel">
+      <span>New Group</span>
+      <% unless group.new_record? %>
+        <%= link_to 'Delete',
+          [:admin, group],
+          method: :delete,
+          class: 'btn btn-sm btn-danger-outline pull-xs-right',
+          data: { confirm: "#{group.name} will be deleted (but its users will not). Are you sure?" } %>
+      <% end %>
+    </h4>
+    <p>Groups separate registered users into categories that have different access and permission, like Teachers and Students.</p>
+
+    <div class="form-group row">
+      <%= f.label :name, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :name, class: 'form-control' %></div>
+    </div>
+
+    <% unless @plans.nil? || @plans.empty? %>
+      <div class='form-group row'>
+        <fieldset class='plan'>
+        <%= f.label :stripe_plan, class: 'form-control-label col-sm-2' %>
+        <div class='col-sm-10'><%= f.select :stripe_plan, @plans, {include_blank: 'None'}, class: 'c-select' %></div>
+        </fieldset>
+      </div>
+    <% end %>
+
+    <div class="form-group row">
+      <%= f.label :description, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :description, class: 'form-control' %></div>
+    </div>
+  <% end %>
+</div>
+
+<div class="modal-footer">
+  <%= link_to 'Close', admin_groups_path, class: 'btn btn-secondary' %>
+  <button type='button' class='btn btn-primary' data-form-submit='form'>Save</button>
+</div>

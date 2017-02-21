@@ -1,0 +1,59 @@
+<div id="bg-overlay" class="bg-img" style="background-image: url(https://s3.amazonaws.com/lvlupdojo/images/hero-01.jpg);"></div>
+<div id='signin-panel'>
+
+  <div class="card">
+    <div class="card-block">
+      <p class="pad-btm">Sign Up for an account</p>
+
+      <%= form_tag '/auth/identity/register' do %>
+        <% if @user && @user.errors.any? %>
+          <div>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+            <%= label_tag :user_name, 'User name', class: 'sr-only' %>
+            <%= text_field_tag :user_name, '', class: 'form-control', placeholder: 'Username' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            <%= label_tag :email, 'Email', class: 'sr-only' %>
+            <%= email_field_tag :email, '', class: 'form-control', placeholder: 'your@email.com' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+            <%= label_tag :password, 'Password', class: 'sr-only' %>
+            <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Choose a password' %>
+          </div>
+        </div>
+
+        <div class="form-group text-xs-right">
+          <%= submit_tag 'Sign me up', class: 'btn btn-success text-uppercase' %>
+        </div>
+
+      <div class="hidden"><%= render 'shared/social', greeting: "or Sign up with" %></div>
+
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="pad-ver">
+      <%= link_to 'I have an account', new_signin_path, class: 'btn-link' %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+<div class='content-container'>
+  <h1>Themes</h1>
+  <div class='card'>
+    <div class='card-block'>
+      <%= link_to new_admin_theme_path, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus'></i> Add Theme
+      <% end %>
+    </div>
+    <div class='card-block'>
+
+      <table class='table table-hover table-striped table-sm' data-sort-url='<%= admin_themes_url %>' data-current-sort-column='<%= @current_sort_column %>' data-sort-dir='<%= @sort_dir %>'>
+        <thead>
+          <tr>
+            <th data-sort-column='title'>Title</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @themes.each do |theme| %>
+            <tr data-id='<%= theme.id %>'>
+              <td data-field='title'><%= theme.name %></td>
+              <td><%= link_to icon('pencil'), edit_admin_theme_path(theme) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class='row text-xs-right'></div>
+    </div>
+  </div>
+
+  <% content_for :modals do %>
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render 'form', theme: Theme.new %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

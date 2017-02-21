@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= ENV['SITE_NAME'] %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'profile', media: 'all' %>
+    <%= stylesheet_link_tag    'themer', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <%= render 'shared/icons' %>
+  </head>
+
+  <body class="<%= controller.controller_name %>">
+    <%= render 'shared/flash' %>
+    <%= render 'shared/navigation' %>
+
+    <div id='container' class="text-xs-center">
+      <%= yield %>
+    </div>
+  </body>
+</html>

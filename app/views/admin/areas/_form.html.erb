@@ -1,0 +1,137 @@
+<div class="modal-body">
+  <%= form_for([:admin, area], html: {id: 'editor_form'}) do |f| %>
+    <h4 class="modal-title text-center" id="exampleModalLabel"><%= area.new_record? ? 'New' : 'Edit' %>
+      <span>Course</span>
+      <% unless area.new_record? %>
+        <%= link_to 'Delete',
+          [:admin, area],
+          method: :delete,
+          class: 'btn btn-sm btn-danger-outline pull-xs-right',
+          data: { confirm: "#{area.name} and all of its lessons will be deleted. Are you sure?" } %>
+      <% end %>
+    </h4>
+    <p>Courses divide the site into sections like Home, Blog, FAQ and groups of lessons.</p>
+
+    <div class="form-group row">
+      <%= f.label :name, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :name, class: 'form-control' %></div>
+    </div>
+
+    <!-- <div class="form-group row"> -->
+      <%# f.label :mode, 'Layout', class: 'form-control-label col-sm-2' %>
+      <!-- <div class='col-sm-10'> -->
+        <%# select 'area', 'mode', nil, {}, {class: 'c-select'} do %>
+          <%# Area::LAYOUTS.each do |opt| %>
+            <!-- <option value='<%# opt[1] %>' data-comment='<%# opt[2] %>'><%# opt[0] %></option> -->
+          <%# end %>
+        <%# end %>
+        <!-- <br/><small id='mode_comment'></small> -->
+      <!-- </div> -->
+    <!-- </div> -->
+
+    <div class="form-group row">
+      <%= f.label :mode, 'Theme', class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'>
+        <%= f.collection_select :theme_id, Theme.all, :id, :name, {prompt: '[Choose a theme]'}, {class: 'c-select'} %>
+        <br/><small id='mode_comment'></small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :label, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :label, class: 'form-control' %></div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :skus, 'SKU Access', class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'>
+        <% Sku.all.sort{ |x,y| x.name <=> y.name }.each do |sku| %>
+          <%= check_box_tag "area[skus][]", sku.plan_id, f.object.has_sku(sku.plan_id), id: dom_id(sku) %>
+          <%= label_tag dom_id(sku), sku.name %><br/>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :navigation, class: 'form-control' %> Has button in Navigation bar
+          </label>
+        </div>
+      </div>
+    </div>
+
+<% if false %>
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :footer, class: 'form-control' %>
+              Has link in footer menu
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :comments, class: 'form-control' %>
+            Allow comments in this Area
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :paid, class: 'form-control' %>
+            Require a paid subscription
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :restricted, class: 'form-control' %>
+            Contains age-restricted content
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class='col-sm-2'>&nbsp;</div>
+      <div class='col-sm-10'>
+        <div class='checkbox'>
+          <label>
+            <%= f.check_box :ascending, class: 'form-control' %>
+            Newest content is displayed first
+          </label>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>
+
+</div>
+
+<%= render 'admin/pages/table' if @pages %>
+
+<div class="modal-footer">
+  <%= link_to 'Close', admin_areas_path, class: 'btn btn-secondary' %>
+  <button type='button' class='btn btn-primary' data-form-submit='form'>Save</button>
+</div>

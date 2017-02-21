@@ -1,0 +1,41 @@
+//@import 'variables.scss';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: -64px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+  .container { text-align: center; }
+  li {
+    display: inline-block;
+    margin: 0 10px 20px;
+  }
+}
+
+table.table-middle {
+  td {
+    vertical-align: middle;
+    &[data-field='avatar'] img { height: 32px; }
+  }
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+//.btn-xs {
+//  // line-height: ensure proper height of button next to extra small input
+//  @include button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius);
+//}

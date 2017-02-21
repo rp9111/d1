@@ -1,0 +1,44 @@
+<div class='modal-body'>
+  <%= form_for([:admin, sku]) do |f| %>
+    <h4 class='modal-title text-center' id='exampleModalLabel'><%= sku.new_record? ? 'New' : 'Edit' %>
+      <span>Sku</span>
+      <% unless sku.new_record? %>
+        <%= link_to 'Delete',
+          [:admin, sku],
+          method: :delete,
+          class: 'btn btn-sm btn-danger-outline pull-xs-right',
+          data: { confirm: "#{sku.name} will be deleted. Are you sure?" } %>
+      <% end %>
+    </h4>
+
+    <div class='form-group row'>
+      <%= f.label :name, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :name, class: 'form-control' %></div>
+    </div>
+
+    <div class='form-group row'>
+      <%= f.label :plan_id, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_field :plan_id, class: 'form-control' %></div>
+    </div>
+
+    <div class='form-group row'>
+      <%= f.label :price, 'Amount', class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.number_field :price, class: 'form-control', step: 'any' %></div>
+    </div>
+
+    <div class='form-group row'>
+      <%= f.label :interval, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.select :interval, [['month', 'month'], ['year', 'year'], ['lifetime', 'lifetime']] %></div>
+    </div>
+
+    <div class='form-group row'>
+      <%= f.label :description, class: 'form-control-label col-sm-2' %>
+      <div class='col-sm-10'><%= f.text_area :description %></div>
+    </div>
+  <% end %>
+</div>
+
+<div class='modal-footer'>
+  <%= link_to 'Close', admin_skus_path, class: 'btn btn-secondary' %>
+  <button type='button' class='btn btn-primary' data-form-submit='form'>Save</button>
+</div>

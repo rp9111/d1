@@ -1,0 +1,78 @@
+/*
+.mycenter.div {
+  font: 1.1rem 'Proxima Nova', sans-serif !important;
+  line-height: 1.5em !important;
+  border-bottom-style: none;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .1em;
+}
+
+.mycenter div figure {
+  height: 35vw;
+  max-height: 900px;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  margin-bottom: 1.5rem;
+  position: relative;
+  font-size: 30px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  z-index: -1;
+  padding: 0;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.mycenter div figure + strong + em {
+  line-height: 1em;
+  letter-spacing: .15em;
+}
+
+main > div {
+  width: 100%;
+}
+
+.mycenter div a {
+  font-weight: 200;
+  display: block;
+  text-align: center;
+  line-height: 1.4em;
+  font-size: .9em;
+  color: white;
+}
+*/
+
+/*
+.mycenter div a span {
+  display: block;
+  position: absolute;
+  bottom: -5em;
+  left: 0;
+  right: 0;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  opacity: 0;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.mycenter > a:hover span {
+  text-decoration: none;
+  bottom: 2rem;
+  opacity: 1;
+}
+
+.mycenter a span {
+  opacity: 1;
+  bottom: 2rem;
+}
+*/

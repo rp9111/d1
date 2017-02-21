@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @page.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @page.user.try(:name) %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @page.content %>
+</p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= @page.cover %>
+</p>
+
+<p>
+  <strong>Permalink:</strong>
+  <%= @page.permalink %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @page.area.try(:name) %>
+</p>
+
+<p>
+  <strong>Commentable:</strong>
+  <%= @page.commentable %>
+</p>
+
+<p>
+  <strong>Properties:</strong>
+  <%= @page.properties %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @page.position %>
+</p>
+
+<p>
+  <strong>Publish:</strong>
+  <%= @page.publish %>
+</p>
+
+<p>
+  <strong>Views:</strong>
+  <%= @page.impressions.count %>
+</p>
+
+<p>
+  <strong>Published at:</strong>
+  <%= @page.published_at %>
+</p>
+
+<p>
+  <strong>Pull at:</strong>
+  <%= @page.pull_at %>
+</p>
+
+<%= link_to 'Edit', edit_admin_page_path(@page) %> |
+<%= link_to 'Back', admin_pages_path %>

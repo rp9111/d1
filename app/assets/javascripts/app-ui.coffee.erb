@@ -1,0 +1,29 @@
+jQuery ->
+  $('#maximage').maximage() if $('#maximage').length > 0
+
+  $('#card_button').on 'click', ->
+    alert 'hello'
+    Stripe.setPublishableKey("<%= ENV['STRIPE_PUBLIC_KEY'] %>");
+    Stripe.card.createToken {
+      number: $('#card_number').val()
+      cvc: $('#card_cvc').val()
+      exp_month: $('#card_month').val()
+      exp_year: $('#card_year').val()
+    }, stripeResponseHandler
+    false
+
+  stripeResponseHandler = (status, response) ->
+    if status == 200
+      $.ajax
+        type: 'PUT'
+        url: '/user' # '/' + $('form').data('user-id')
+        data: { user: { stripe_token: response.id } }
+    alert 'goodbye'
+    console.log status
+    console.log response
+
+  $('.accordion').on 'click', ->
+    open = $(this).next().hasClass('collapsed')
+    $('.accordion').each ->
+      $(this).next().addClass('collapsed')
+    $(this).next().removeClass('collapsed') if open

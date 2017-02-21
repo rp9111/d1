@@ -1,0 +1,19 @@
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+AllCops:
+  # Include:
+  #   - '**/Rakefile'
+  #   - '**/config.ru'
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'coverage/**/*'
+    - 'db/**/*'
+    - 'factories/**/*'
+    - 'script/**/*'
+    - 'spec/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/

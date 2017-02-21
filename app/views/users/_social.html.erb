@@ -1,0 +1,10 @@
+<% active = current_user.send("#{provider.parameterize(separator: '_')}?") %>
+<% if active %>
+  <%= link_to delete_identity_path(provider.parameterize(separator: '_')), class: 'btn btn-primary active' do %>
+    <i class='fa fa-icon fa-<%= provider.split.first.downcase %>'></i>
+  <% end %>
+<% else %>
+  <%= link_to "/auth/#{provider.parameterize(separator: '_')}", class: 'btn btn-primary' do %>
+    <i class='fa fa-icon fa-<%= provider.split.first.downcase %>'></i>
+  <% end %>
+<% end %>

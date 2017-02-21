@@ -1,0 +1,45 @@
+<h1><%= theme.new_record? ? 'New' : 'Edit' %> Theme</h1>
+
+<%= form_for([:admin, theme], html: {id: 'editor_form'}) do |f| %>
+  <% unless theme.new_record? || theme.areas.size > 0 %>
+    <%= link_to 'Delete',
+      [:admin, theme],
+      method: :delete,
+      class: 'btn btn-sm btn-danger-outline pull-xs-right',
+      data: { confirm: "The \"#{theme.name}\" is unused and seems safe to delete. Are you sure though?" } %>
+  <% end %>
+  <div class="form-group row">
+    <%= f.label :name, class: 'form-control-label col-sm-1' %>
+    <div class='col-sm-11'><%= f.text_field :name, class: 'form-control' %></div>
+  </div>
+  <ul id='editor-tabs' class='nav nav-tabs' role='tablist'>
+    <li class='nav-item'>
+      <a class='nav-link active' href='#structure'>Structure</a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='#styles'>Styles</a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='#behavior'>Behavior</a>
+    </li>
+    <div class='pull-right'><%= f.submit 'Save', class: 'btn btn-primary btn-block pull-right' %></div>
+  </ul>
+  <div class='row'>
+    <div class='tab-content col-sm-12'>
+      <div class='tab-pane active' id='structure' role='tabpanel'>
+        <%= f.label :structure, class: 'sr-only' %>
+        <%= f.text_area :structure, id: 'editor_structure' %>
+      </div>
+
+      <div class='tab-pane' id='styles' role='tabpanel'>
+        <%= f.label :style, class: 'sr-only' %>
+        <%= f.text_area :style, id: 'editor_style' %>
+      </div>
+
+      <div class='tab-pane' id='behavior' role='tabpanel'>
+        <%= f.label :behavior, class: 'sr-only' %>
+        <%= f.text_area :behavior, id: 'editor_behavior' %>
+      </div>
+    </div>
+  </div>
+<% end %>

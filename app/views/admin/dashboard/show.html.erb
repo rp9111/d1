@@ -1,0 +1,125 @@
+<div clas='page-header text-overflow'>
+  <h1 class="page-header">Dashboard</h1>
+</div>
+
+<div class='row'>
+
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="card card-block info-panel">
+      <div class="media-left pull-xs-left">
+        <div class="icon-wrap icon-wrap-sm img-circle bg-success">
+        <i class="fa fa-user fa-2x"></i>
+        </div>
+      </div>
+      <div class="media-body">
+        <p class="info-data"><%= User.count %></p>
+        <p class="text-muted">Registered Users</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="card card-block info-panel">
+      <div class="media-left pull-xs-left">
+        <div class="icon-wrap icon-wrap-sm img-circle bg-warning">
+        <i class="fa fa-users fa-2x"></i>
+        </div>
+      </div>
+      <div class="media-body">
+        <p class="info-data"><%= Impression.distinct.pluck(:ip, :user_id).size %></p>
+        <p class="text-muted">Unique Visitors</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="card card-block info-panel">
+      <div class="media-left pull-xs-left">
+        <div class="icon-wrap icon-wrap-sm img-circle bg-info">
+        <i class="fa fa-comment fa-2x"></i>
+        </div>
+      </div>
+      <div class="media-body">
+        <p class="info-data"><%= Comment.where('created_at > ?', 1.day.ago).size %></p>
+        <p class="text-muted">Recent Comments</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="card card-block info-panel">
+      <div class="media-left pull-xs-left">
+        <div class="icon-wrap icon-wrap-sm img-circle bg-danger">
+        <i class="fa fa-eye fa-2x"></i>
+        </div>
+      </div>
+      <div class="media-body">
+        <p class="info-data"><%= Impression.count %></p>
+        <p class="text-muted">Page Views</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class='row'>
+
+  <div class='col-md-12 col-lg-6'>
+    <div class='card traffic'>
+      <div class='card-block'>
+        <div class='card-header'>Past 7 days</div>
+        <ul class="list-inline">
+  				<li>
+						<span class="h5"><%= @impressions.map {|i| i[:count]}.sum %> page views</span>
+						<p class="text-muted text-uppercase"><small>since <%= @impressions.first[:date] %></small></p>
+  				</li>
+  				<li>
+						<span class="h5"><%= @impressions.map {|i| i[:count]}.sum / @impressions.map {|i| i[:count]}.count %> average</span>
+						<p class="text-muted text-uppercase"><small>visits per day</small></p>
+  				</li>
+  			</ul>
+      </div>
+      <%= content_tag :div, '', id: 'traffic', data: { points: @impressions } %>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-4">
+    <div class="card card-inverse card-warning card-merits" >
+      <div class="card-block">
+        <div class='card-header text-xs-center no-lr-padding'><i class="fa fa-trophy fa-2x"></i></div>
+        <br/>
+        <% if Page.any? %>
+          <dl>
+            <dd>Most liked</dd>
+            <dt><%= link_to Page.last.title, Page.last.url %></dt>
+            <dd>Most read</dd>
+            <dt><%= link_to Page.first.title, Page.first.url %></dt>
+            <dd>Most comments</dd>
+            <dt><%= link_to Page.first.title, Page.first.url %></dt>
+          </dl>
+        <% else %>
+          Click <%= link_to 'here', new_admin_page_path %> to create a page.
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-2">
+    <div class="card card-inverse card-info" >
+      <div class="card-block">
+        <div class='card-header text-xs-center no-lr-padding'>To Do</div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- row -->

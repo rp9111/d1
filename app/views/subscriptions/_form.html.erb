@@ -1,0 +1,81 @@
+<%= form_for @user, url: subscriptions_url, method: :post, html: { id: 'subscription_form' } do |f| %>
+  <span class='payment-errors'></span>
+  <% if @user.errors.any? || flash.any? %>
+  <script type="text/javascript">
+    toastr.options = {
+      'closeButton': false,
+      'debug': false,
+      'positionClass': 'toast-top-center',
+      'onclick': null,
+      'showDuration': '300',
+      'hideDuration': '1000',
+      'timeOut': '7000',
+      'extendedTimeOut': '10000',
+      'showEasing': 'swing',
+      'hideEasing': 'linear',
+      'showMethod': 'fadeIn',
+      'hideMethod': 'fadeOut'
+    }
+
+    <% @user.errors.full_messages.each do |msg| %>
+      toastr['warning']('<%= msg %>');
+    <% end %>
+
+  </script>
+  <% end %>
+
+  <%= f.hidden_field :plan_id, value: @plan.plan_id %>
+  <%= f.hidden_field(:stripe_token) if @user.stripe_token %>
+
+  <div class="group account">
+    <h2>Create Your Account</h2>
+
+    <div class="field email">
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: "username@email.com", data: { stripe: 'email' }, required: true %>
+    </div>
+
+    <div class="field password">
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: "Password", required: true %>
+    </div>
+  </div>
+
+  <div class="group plan">
+    <h2>Your Plan</h2>
+    <ul>
+      <li><strong>Plan</strong> <%= @plan.name %><br/><!-- BRIAN --><%= @plan.description %></li>
+      <li><strong>Payment</strong> <span><%= number_to_currency(@value) %></span> per <%= @plan.interval %></li>
+    </ul>
+  </div>
+
+  <% unless @user.stripe_token.present? %>
+    <div class="group payment">
+      <h2>Payment Information</h2>
+      <div class="card-wrapper"></div>
+      <div class="card">
+        <div class="field name">
+          <%= f.text_field :name, id: 'name', placeholder: "Full Name" %>
+        </div>
+        <div class="field number">
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil, size: 20, placeholder: "Card Number", data: { stripe: 'number' } %>
+        </div>
+        <div class="field exp">
+          <%= label_tag :card_month, "Card Expiration" %>
+          <%= text_field_tag :card_month, nil, name: nil, size: 2, placeholder: "MM", data: { stripe: 'exp_month' } %>
+          <%= text_field_tag :card_year, nil, name: nil, size: 2, placeholder: "YY", data: { stripe: 'exp_year' } %>
+        </div>
+        <div class="field cvc">
+          <%= label_tag :card_code, "Security Code", data: { stripe: 'cvc' } %>
+          <%= text_field_tag :card_code, nil, placeholder: "CVC", name: nil, size: 4 %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Subscribe", id: "subscribe_button", name: 'new_subscription' %>
+  </div>
+
+<% end %>

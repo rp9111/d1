@@ -1,0 +1,15 @@
+<div class='comment-group'>
+  <div class='comment'>
+    <%= image_tag threaded.user.avatar, class: 'avatar' %>
+    <div class='comment-body'>
+      <div class='info'>
+        <%= link_to threaded.user.name, user_path(threaded.user) %>
+        <span class='quiet'><%= time_ago_in_words threaded.submitted_at %> ago</span>
+        <span>&bull;</span>
+        <%= link_to 'Reply', '#' %>
+      </div>
+      <%= simple_format threaded.content %>
+    </div>
+  </div>
+  <%= render partial: 'comments/threaded', collection: threaded.comments %>
+</div>

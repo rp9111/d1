@@ -1,0 +1,87 @@
+<%= form_for @user, url: user_path, multipart: true, data: { user_id: @user.id } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited sign up:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='card'>
+
+    <div class='card-block'>
+      <div class="field text-xs-center">
+        <div class='imagedrop-border'>
+          <div data-imagedrop style="background-image: url(<%= f.object.avatar_url unless f.object.new_record? %>)">
+            <%= f.file_field :avatar %>
+            <div>- Drop here -</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='row text-xs-center'>
+      <div class="btn-group">
+        <%= render 'social', provider: 'Facebook' %>
+        <%= render 'social', provider: 'Twitter' %>
+        <%= render 'social', provider: 'Google OAuth2' %>
+        <%= render 'social', provider: 'Instagram' %>
+        <%= render 'social', provider: 'Twitch' %>
+      </div>
+    </div>
+
+    <div class='card-block text-xs-center'>
+
+      <div class="row form-group">
+        <div class="col-xs-2 text-xs-right"><%= f.label :first_name, 'Name' %></div>
+        <div class="col-xs-5">
+          <%= f.label :first_name, class: 'sr-only' %>
+          <%= f.text_field :first_name, class: 'form-control', placeholder: 'First' %>
+        </div>
+        <div class="col-xs-5">
+          <%= f.label :last_name, class: 'sr-only' %>
+          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last' %>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2 text-xs-right"><%= f.label :email %></div>
+        <div class="col-xs-10"><%= f.email_field :email, class: 'form-control', placeholder: 'Email' %></div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2 text-xs-right"><%= f.label :user_name %></div>
+        <div class="col-xs-10"><%= f.text_field :user_name, class: 'form-control', placeholder: 'User name' %></div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-xs-2 text-xs-right"><%= f.label :password %></div>
+        <div class="col-xs-10"><%= f.password_field :password, class: 'form-control', placeholder: 'Password' %></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class='card'>
+    <div class='card-title accordion'>About me</div>
+
+    <div class='card-block text-xs-center collapsed'>
+      <div class="row form-group">
+        <div class="col-xs-12"><%= f.text_area :bio, class: 'form-control', placeholder: 'Write something about yourself.' %></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='card-block text-xs-center'>
+
+    <div class="row">
+      <div class='col-xs-12'><%= f.submit 'Done', class: 'btn btn-primary btn-block' %></div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,48 @@
+<div class='content-container'>
+  <h1>Groups</h1>
+  <div class='card'>
+    <div class='card-block'>
+      <%= link_to '#', data: { toggle: 'modal', target: '#form_modal' }, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus'></i> Add Group
+      <% end %>
+    </div>
+    <div class='card-block'>
+      <table class='table table-hover table-striped table-sm'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Plan</th>
+            <th>Members</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr data-id='<%= group.id %>'>
+              <td><%= group.name %></td>
+              <td><%= group.description %></td>
+              <td><%= group.stripe_plan.titleize unless group.stripe_plan.nil? %></td>
+              <td><%= group.users.size %></td>
+              <td><%= link_to icon('pencil'), edit_admin_group_path(group) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <br>
+
+  <% content_for :modals do %>
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render 'form', group: Group.new %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -1,0 +1,160 @@
+/* @group reset */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+
+div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html, body { 
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1em;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary { 
+  display: block;
+}
+
+audio, canvas, video {
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+input { 
+  outline: none; 
+}
+
+a.btn {
+  display: inline-block;
+}
+
+
+body {
+  color: black;
+  background-color: white;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #ffffff;
+}
+
+a img { border: none; }
+
+input, textarea, select { 
+  -webkit-appearance: none;
+}
+
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", "Droid Sans", "Segoe WP", sans-serif;
+}
+
+cite {
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizelegibility;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: normal;
+  font-style: normal;
+}
+
+ol, ul, dl, li, dt, dd, p {
+  line-height: 1em;
+  font-size: 1em;
+}
+
+ol, ul { 
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+small {
+  font-size: .9em;
+}
+
+q, blockquote { 
+  quotes: none; 
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+/* @end */

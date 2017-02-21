@@ -1,0 +1,35 @@
+# Notes: Copy this file to .envrc, edit the values and run 'direnv allow'.
+# The N/A entries aren't generally necessary for development or test.
+# For IMAGE_MAGICK_PATH use 'which convert' from the command line to get a
+# value, which will probably be '/usr/local/bin/convert'.
+
+export IRIDIUM_SITE_NAME=Iridium\ Demo
+
+export IRIDIUM_TWITTER_API_ID=''
+export IRIDIUM_TWITTER_API_SECRET=''
+export IRIDIUM_FACEBOOK_API_ID=''
+export IRIDIUM_FACEBOOK_API_SECRET=''
+export IRIDIUM_GOOGLE_API_ID=''
+export IRIDIUM_GOOGLE_API_SECRET=''
+export IRIDIUM_INSTAGRAM_API_ID=''
+export IRIDIUM_INSTAGRAM_API_SECRET=''
+
+# export IRIDIUM_AWS_BUCKET_NAME='N/A'
+# export IRIDIUM_AWS_REGION='N/A'
+# export IRIDIUM_AWS_ACCESS_KEY_ID='N/A'
+# export IRIDIUM_AWS_SECRET_ACCESS_KEY='N/A'
+
+# export IRIDIUM_BITLY_TOKEN=''
+
+
+
+export IRIDIUM_IMAGE_MAGICK_PATH=''
+
+export IRIDIUM_MAILER_METHOD='smtp'
+export IRIDIUM_MAILER_DOMAIN=''
+export IRIDIUM_MAILER_ADDRESS=''
+export IRIDIUM_MAILER_PORT=''
+export IRIDIUM_MAILER_ACCOUNT=''
+export IRIDIUM_MAILER_PASSWORD=''
+export IRIDIUM_MAILER_FROM=''
+export IRIDIUM_MAILER_REPLY=''

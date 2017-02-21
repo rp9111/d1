@@ -1,0 +1,46 @@
+<div class='card'>
+  <div class='card-block'>
+    <h4 class="card-title">Lessons</h4>
+  </div>
+  <div class='card-block'>
+
+    <table class='table table-hover table-striped table-sm' data-sort-url='<%= admin_pages_url %>' data-current-sort-column='<%= @current_sort_column %>' data-sort-dir='<%= @sort_dir %>'>
+      <thead>
+        <tr>
+          <th data-sort-column='title'>Title</th>
+          <!-- <th data-sort-column='users.last_name'>By</th> -->
+          <% if @area.nil? %><th data-sort-column='areas.name'>Area</th><% end %>
+          <!-- <th data-sort-column='permalink'>Permalink</th> -->
+          <th data-sort-column='commentable'>Comments</th>
+          <th data-sort-column='publish'>Ready</th>
+          <th data-sort-column='published_at'>Published at</th>
+          <th data-sort-column='pull_at'>Pull at</th>
+          <th data-sort-column='impressions_count'>Views</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody data-sortable='<%= reorder_admin_pages_url %>'>
+        <% @pages.each do |page| %>
+          <tr data-edit-id='<%= page.id %>'>
+            <td data-field='title'><%= page.title.try(:truncate, 40) %></td>
+            <!-- <td data-field='user_name'><%= page.user.name %></td> -->
+            <% if @area.nil? %><td data-field='area_name'><%= page.area.name %></td><% end %>
+            <!-- <td data-field='permalink'><%= page.permalink.try(:truncate, 10) %></td> -->
+            <td data-field='commentable'><%= yes_no page.commentable %></td>
+            <td data-field='publish'><%= yes_no page.publish %></td>
+            <td data-field='published_at'><i class='fa fa-clock-o'></i> <%= page.published_at.nil? ? "&mdash;".html_safe : page.published_at.to_date.strftime('%b %e, %y') %></td>
+            <td data-field='pull_at'><%= page.pull_at.nil? ? "&mdash;".html_safe : "<i class='fa fa-clock-o'></i> #{page.pull_at.to_date.strftime('%b %e, %y')}".html_safe %></td>
+            <td data-field='impressions_count'><%= page.impressions.count %></td>
+            <td><%= link_to icon('pencil'), edit_admin_page_path(page) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class='card-block'>
+    <%= link_to new_admin_page_path(area_id: @area), class: 'btn btn-primary' do %>
+      <i class='fa fa-plus'></i> Add Lesson
+    <% end %>
+  </div>
+</div>

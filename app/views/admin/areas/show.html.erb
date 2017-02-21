@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @area.name %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @area.label %>
+</p>
+
+<p>
+  <strong>Navigation:</strong>
+  <%= @area.navigation %>
+</p>
+
+<p>
+  <strong>Footer:</strong>
+  <%= @area.footer %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @area.comments %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @area.position %>
+</p>
+
+<p>
+  <strong>Ascending:</strong>
+  <%= @area.ascending %>
+</p>
+
+<p>
+  <strong>Mode:</strong>
+  <%= @area.mode %>
+</p>
+
+<%= link_to 'Edit', edit_admin_area_path(@area) %> |
+<%= link_to 'Back', admin_areas_path %>

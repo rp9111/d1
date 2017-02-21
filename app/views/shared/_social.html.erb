@@ -1,0 +1,18 @@
+<div class='text-xs-center'>
+  <div class="mar-btm"><em><%= "#{greeting} &#8230;".html_safe %></em></div>
+  <%= link_to '/auth/facebook', class: 'btn btn-primary btn-xs' do %>
+    <i class="fa fa-facebook"></i> Facebook
+  <% end %>
+  <%= link_to '/auth/twitter', class: 'btn btn-primary btn-xs' do %>
+    <i class="fa fa-twitter"></i> Twitter
+  <% end %>
+  <%= link_to '/auth/google_oauth2', class: 'btn btn-primary btn-xs' do %>
+    <i class="fa fa-google"></i> Google
+  <% end %>
+  <%= link_to '/auth/instagram', class: 'btn btn-primary btn-xs' do %>
+    <i class="fa fa-instagram"></i> Instagram
+  <% end %>
+  <%= link_to '/auth/twitch', class: 'btn btn-primary btn-xs' do %>
+    <i class="fa fa-twitch"></i> Twitch
+  <% end %>
+</div>

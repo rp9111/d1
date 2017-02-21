@@ -1,0 +1,60 @@
+<div class='content-container'>
+  <h1>Promos</h1>
+
+  <div class='card'>
+    <div class='card-block'>
+      <%= link_to '#', data: { toggle: 'modal', target: '#form_modal' }, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus'></i> Add Promo
+      <% end %>
+    </div>
+    <div class='card-block'>
+
+      <table class='table table-hover table-striped table-sm table-middle' data-sort-url='<%= admin_skus_url %>' data-current-sort-column='<%= @current_sort_column %>' data-sort-dir='<%= @sort_dir %>'>
+        <thead>
+          <tr>
+            <th data-sort-column='enabled'>Enabled</th>
+            <th data-sort-column='name'>Name</th>
+            <th data-sort-column='course_id'>Landing</th>
+            <th data-sort-column='stripe_coupon'>Stripe coupon</th>
+            <th data-sort-column='message'>Message</th>
+            <th data-sort-column='hits'>Hits</th>
+            <th data-sort-column='conversions'>Conversions</th>
+            <th>Rate</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @promos.each do |promo| %>
+            <tr data-id='<%= promo.id %>'>
+              <td data-row-click data-field='enabled'><%= icon('check') if promo.enabled %></td>
+              <td data-row-click data-field='plan_id'><%= link_to icon('external-link-square', promo.name), promo_url(promo.name) %></td>
+              <td data-row-click data-field='landing'><%= promo.course.name %></td>
+              <td data-row-click data-field='stripe_coupon'><%= promo.stripe_coupon %></td>
+              <td data-row-click data-field='hits'><%= truncate(promo.message, length: 40) %></td>
+              <td data-row-click data-field='hits'><%= promo.hits %></td>
+              <td data-row-click data-field='conversions'><%= promo.conversions %></td>
+              <td data-row-click data-field='rate'><%= promo.rate > 0 ? number_to_percentage(promo.rate * 100, precision: 1) : '&mdash;'.html_safe %></td>
+              <td><%= link_to icon('pencil'), edit_admin_promo_path(promo) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @promos %>
+      <div class='row text-xs-right'></div>
+
+    </div>
+  </div>
+
+  <% content_for :modals do %>
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render 'form', promo: Promo.new %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

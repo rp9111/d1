@@ -1,0 +1,32 @@
+<header class="main">
+<div class="content">
+  <h1><a class="logo" href="/"></a></h1>
+</div>
+</header>
+<nav class="navbar navbar-dark bg-inverse">
+  <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="logo" href="/"></a>
+  <div id="navbar">
+     <nav class="nav navbar-nav pull-xs-left">
+      <%= link_to 'Admin', admin_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+      <!--<%= render(partial: 'shared/navitem', collection: nav_items) if Area.count %>-->
+    </nav>
+    <nav class="nav navbar-nav pull-xs-right">
+      <% if current_user %>
+        <%= link_to current_user.user_name, profile_path, class: 'nav-item nav-link' %>
+        <%= link_to 'Sign out', signout_path, class: 'nav-item nav-link' %>
+      <% elsif !current_page?(signin_path) %>
+        <%= link_to 'Sign in', signin_path, class: 'nav-item nav-link' %>
+      <% end %>
+    </nav> 
+    <!-- TODO: Replace search bar with user menu -->
+    <!-- <form class="pull-xs-right"> -->
+      <!-- <input type="text" class="form-control" placeholder="Search..."> -->
+    <!-- </form> -->
+  </div>
+</nav>

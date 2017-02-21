@@ -1,0 +1,27 @@
+<div class='card'>
+  <div class='card-title accordion'>Billing Info</div>
+
+  <div class='card-block text-xs-center collapsed'>
+
+    <%= f.hidden_field :stripe_token %>
+
+    <div class="row form-group">
+      <div class="col-xs-2 text-xs-right"><%= f.label :card_number %></div>
+      <div class="col-xs-10"><%= text_field_tag :card_number, '', class: 'form-control', placeholder: '1234 5678 1867 5309' %></div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-xs-2 text-xs-right"><%= f.label :card_month, 'Expiry' %></div>
+      <div class="col-xs-5"><%= select_tag :card_month, options_for_select( 1..12 ), class: 'c-select form-control' %></div>
+      <div class="col-xs-5"><%= select_tag :card_year, options_for_select( Date.today.year..(Date.today.year + 10) ), class: 'c-select form-control' %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2 text-xs-right"><%= f.label :card_cvc, 'CVC' %></div>
+      <div class="col-xs-5"><%= text_field_tag :card_cvc, '', class: 'form-control', placeholder: '321' %></div>
+      <div class="col-xs-5"><%= button_tag 'Update Credit Card', id: 'card_button', class: 'btn btn-primary btn-success btn-sm btn-block' %></div>
+    </div>
+
+  </div>
+
+</div>

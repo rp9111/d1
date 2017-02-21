@@ -1,0 +1,98 @@
+.main {
+  margin-top: 54px;
+  padding: 2em 0;
+  overflow-y: scroll;
+  .content {
+    max-width: 720px;
+    margin: auto;
+  }
+}
+.parallax-window {
+    min-height: 600px;
+    background: transparent;
+}
+
+.page-parallax {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  section {
+    width: 40em;
+    margin: 2em auto 4em auto;
+  }
+}
+
+// appearance only
+.page-parallax {
+  header {
+    h2 {
+      color: #fff;
+      text-shadow: 0px 0px 2px #000;
+    }
+  }
+}
+
+#maximage {
+  h1 {
+    position: absolute;
+    color: #fff;
+    text-shadow: 0px 0px 2px #000;
+    left: 2em;
+    bottom: 2em;
+  }
+}
+
+.info {
+  font-size: 14px;
+  display: inline;
+  * { margin-right: 4px; }
+  a { margin-right: 0; }
+}
+
+.quiet {
+  color: #aaa;
+}
+
+//.comment-group {
+//  margin-left: 4em;
+//}
+
+
+header.threaded {
+  h3 { padding-top: 7px; }
+  img.avatar {
+    border-radius: 50%;
+    border: 4px solid white;
+    height: 48px;
+    width: 48px;
+    float: left;
+    margin-right: 12px;
+  }
+}
+
+.threaded-content { clear: both; }
+.page-threaded {
+  margin-top: 2em;
+  .comment-group {
+    padding-top: 1em;
+    & > .comment-group { padding-left: 46px; }
+  }
+  .comment {
+    font-size: .9em;
+    .avatar {
+      border-radius: 50%;
+      display: block;
+      float: left;
+      height: 32px;
+      position: relative;
+      width: 32px;
+    }
+    .comment-body {
+      float: none;
+      margin-left: 46px;
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<div class='content-container'>
+  <h1>SKUs</h1>
+
+  <div class='card'>
+    <div class='card-block'>
+      <%= link_to '#', data: { toggle: 'modal', target: '#form_modal' }, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus'></i> Add SKU
+      <% end %>
+    </div>
+    <div class='card-block'>
+
+      <table class='table table-hover table-striped table-sm table-middle' data-sort-url='<%= admin_skus_url %>' data-current-sort-column='<%= @current_sort_column %>' data-sort-dir='<%= @sort_dir %>'>
+        <thead>
+          <tr>
+            <th data-sort-column='name'>Name</th>
+            <th data-sort-column='plan_id'>Stripe Plan</th>
+            <th data-sort-column='amount'>Amount</th>
+            <th data-sort-column='interval'>Interval</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @skus.each do |sku| %>
+            <tr data-id='<%= sku.id %>'>
+              <td data-row-click data-field='name'><%= sku.name %></td>
+              <td data-row-click data-field='plan_id'><%= sku.plan_id %></td>
+              <td data-row-click data-field='Amount'><%= number_to_currency(sku.amount / 100) %></td>
+              <td data-row-click data-field='Interval'><%= sku.interval %></td>
+              <td><%= link_to icon('pencil'), edit_admin_sku_path(sku) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= paginate @skus %>
+      <div class='row text-xs-right'></div>
+
+    </div>
+  </div>
+
+  <% content_for :modals do %>
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render 'form', sku: Sku.new %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

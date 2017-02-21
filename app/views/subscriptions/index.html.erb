@@ -1,0 +1,6 @@
+<% Sku.all.each do |plan| %>
+  <article class='subscription'>
+    <%= link_to plan.name, new_subscription_url(plan_id: plan.plan_id), class: 'btn btn-success btn-large' %><br/>
+    <%= number_to_currency (plan.amount/100) %> <%= plan.interval %>
+  </article>
+<% end %>

@@ -1,0 +1,49 @@
+<div class='content-container'>
+  <h1>Courses</h1>
+
+  <div class='card'>
+    <div class='card-block'>
+      <%= link_to '#', data: { toggle: 'modal', target: '#form_modal' }, class: 'btn btn-primary' do %>
+        <i class='fa fa-plus'></i> Add Course
+      <% end %>
+    </div>
+    <div class='card-block'>
+      <table class='table table-hover table-striped table-sm'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Label</th>
+            <th>Pages</th>
+            <th>Theme</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody data-sortable='<%= reorder_admin_areas_url %>'>
+          <% @areas.each do |area| %>
+            <tr data-edit-id='<%= area.id %>'>
+              <td data-row-click><%= area.name %></td>
+              <td data-row-click><%= area.label %></td>
+              <td data-row-click><%= area.pages.size > 0 ? area.pages.size : link_to('Add', new_admin_page_path(area_id: area.id), class: 'btn btn-xs btn-success') %></td>
+              <td data-row-click><%= theme_name(area) %></td>
+              <td><%= link_to icon('pencil'), edit_admin_area_path(area) %></td>
+              <td><%= link_to icon('external-link'), area, target: 'preview' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <% content_for :modals do %>
+    <div class="modal fade" id="form_modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <%= render 'form', area: Area.new %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

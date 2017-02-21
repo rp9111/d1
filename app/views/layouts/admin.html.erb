@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title><%= ENV['SITE_NAME'] %></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'admin', media: 'all' %>
+    <%= javascript_include_tag 'admin' %>
+
+    <%= render 'favicon' %>
+  </head>
+
+  <body class='<%= controller.controller_name %>'>
+    <%= render 'shared/flash' %>
+    <%= render 'shared/navigation' %>
+
+    <div class='container-fluid'>
+      <div class='row'>
+        <%= render 'shared/panel' %>
+        <div class='main col-xs-offset-3 col-md-offset-2 col-xs-9 col-md-10'>
+          <%= yield %>
+          <%= render 'shared/footer' if footer_items.any? %>
+        </div>
+      </div>
+      <%= yield :modals %>
+    </div>
+  </body>
+</html>

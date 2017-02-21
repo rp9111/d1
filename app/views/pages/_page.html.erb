@@ -1,0 +1,13 @@
+<article class='page-parallax' data-page-id='<%= page.id %>'>
+
+  <header class='parallax-window' data-parallax='scroll' data-image-src='<%= page.cover %>' data-speed='0.8'>
+    <h2><%= page.title %></h2>
+  </header>
+
+  <div class='post-content'>
+    <section>
+      <%= simple_format page.content.gsub(/\n/, "\n\n") %>
+    </section>
+  </div>
+
+</article>

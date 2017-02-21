@@ -1,0 +1,1 @@
+<%= liquidize(@area.structure, 'area' => @area, 'user' => current_user, 'subscriptions' => @skus, 'page' => @page, 'permitted?' => permitted?(@area, current_user)).html_safe %>

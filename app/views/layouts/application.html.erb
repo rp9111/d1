@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LvlUp Dojo</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <%= javascript_include_tag 'application' %>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= render 'favicon' %>
+  </head>
+
+  <body>
+    <%= render 'shared/flash' %>
+    <%= render 'shared/navigation' %>
+
+    <div class='main'>
+      <%= yield %>
+    </div>
+  </body>
+</html>

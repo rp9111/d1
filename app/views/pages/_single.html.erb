@@ -1,0 +1,13 @@
+<article class='page-single' data-page-id='<%= single.id %>'>
+
+  <header class='single-window' data-parallax='scroll' data-image-src='<%= single.cover %>' data-speed='0.8'>
+    <h2><%= single.title %></h2>
+  </header>
+
+  <div class='post-content'>
+    <section>
+      <%= simple_format single.content.gsub(/\n/, "\n\n") %>
+    </section>
+  </div>
+
+</article>
